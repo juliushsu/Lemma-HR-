@@ -22,7 +22,7 @@ This repository is intentionally kept as a single project for now. The goal of t
 ```text
 app/                  Next.js app and API route handlers
 contracts/            Frontend/backend API contracts
-docs/                 Architecture, product status, runbooks, handoff docs
+DOCS/                 Architecture, product status, runbooks, handoff docs
 scripts/              Repeatable helper scripts
 supabase/migrations/  Database migrations and RLS changes
 supabase/seeds/       Seed layers: base / demo / staging
@@ -37,13 +37,13 @@ supabase/seeds/       Seed layers: base / demo / staging
 
 Canonical guidance lives in:
 
-- [System Overview](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/system-overview-v1.md>)
-- [Environment Governance](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/environment-governance-v1.md>)
-- [RBAC](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/rbac-v1.md>)
-- [Auth Contract](</Users/chishenhsu/Desktop/Codex/Lemma HR+/contracts/auth.me.v2.md>)
-- [Selected Context Decisions](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/selected-context-decisions-v1.md>)
-- [Selected Context Rollout](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/selected-context-rollout-v1.md>)
-- [Session Context Contract](</Users/chishenhsu/Desktop/Codex/Lemma HR+/contracts/auth.session.context.v1.md>)
+- `DOCS/architecture/system-overview-v1.md`
+- `DOCS/architecture/environment-governance-v1.md`
+- `DOCS/architecture/rbac-v1.md`
+- `contracts/auth.me.v2.md`
+- `DOCS/architecture/selected-context-decisions-v1.md`
+- `DOCS/architecture/selected-context-rollout-v1.md`
+- `contracts/auth.session.context.v1.md`
 
 ## Seed Layers
 
@@ -51,7 +51,7 @@ Canonical guidance lives in:
 - `supabase/seeds/demo/`: protected narrative demo seeds, never general smoke targets
 - `supabase/seeds/staging/`: writable staging and sandbox validation seeds
 
-See [Seed Registry](</Users/chishenhsu/Desktop/Codex/Lemma HR+/supabase/seeds/README.md>) before running or adding any seed.
+See `supabase/seeds/README.md` before running or adding any seed.
 
 ## Collaboration Flow
 
@@ -62,4 +62,4 @@ See [Seed Registry](</Users/chishenhsu/Desktop/Codex/Lemma HR+/supabase/seeds/RE
 
 ## Current Constraint
 
-This workspace currently contains the project files but is not initialized as a local Git repository. The governance documents added in this pass are intended to become the baseline once the repo is connected to Git hosting.
+This repository is governed through GitHub at `juliushsu/Lemma-HR-`. Contracts and architecture references should be described using repository-relative paths, not local filesystem paths.
