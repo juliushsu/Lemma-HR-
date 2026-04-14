@@ -36,6 +36,18 @@ The contract must stop implying that the first membership is the active context.
 }
 ```
 
+## Minimum Required Fields
+
+- `data.user.id`
+- `data.user.email`
+- `data.memberships[]`
+- `data.available_contexts[]`
+- `data.current_context`
+- `data.current_org`
+- `data.current_company`
+- `data.locale`
+- `data.environment_type`
+
 ## Context Object
 
 ```json
@@ -55,6 +67,31 @@ The contract must stop implying that the first membership is the active context.
 }
 ```
 
+## Context Object Field Notes
+
+- `membership_id`: stable selection key for environment switching
+- `org_slug`: frontend-safe org label and switch target reference
+- `access_mode`: policy label, not only display text
+- `writable`: frontend hint only; backend policy remains authoritative
+- `is_default`: indicates preferred landing context, not forced context
+
+## Membership Object
+
+`memberships[]` may remain closer to the raw table shape than `available_contexts[]`, but must at minimum include:
+
+```json
+{
+  "id": "uuid",
+  "org_id": "uuid",
+  "company_id": "uuid",
+  "branch_id": null,
+  "role": "viewer",
+  "scope_type": "company",
+  "environment_type": "demo",
+  "is_default": false
+}
+```
+
 ## Required Rules
 
 - `memberships` is the raw list of granted memberships
@@ -62,6 +99,16 @@ The contract must stop implying that the first membership is the active context.
 - `current_context` is the authoritative runtime context
 - `current_org` and `current_company` should reflect `current_context`, not incidental ordering
 - `environment_type` should reflect `current_context`
+- `current_context.membership_id` must be one of the user's memberships
+- `current_context` must be null only when the user has no valid selectable context
+- `current_org` and `current_company` must be derived from the selected context, not from separate fallback ordering
+
+## Backward Compatibility
+
+- `auth.me.v1` may stay available during rollout
+- `auth.me.v2` should be introduced staging-first
+- frontend adapters should prefer `current_context` when present
+- if both `auth.me.v1` and `auth.me.v2` are temporarily exposed, v2 wins for workspace switching behavior
 
 ## Compatibility Guidance
 
@@ -104,3 +151,15 @@ Response:
 }
 ```
 
+## Readdy Mapping Guidance
+
+Readdy should render workspace switching from:
+
+- `data.available_contexts`
+- `data.current_context`
+
+Readdy should not infer current workspace from:
+
+- `data.memberships[0]`
+- `data.current_org` alone
+- `data.environment_type` alone
