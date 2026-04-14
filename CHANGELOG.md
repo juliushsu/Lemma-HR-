@@ -42,3 +42,13 @@ All notable governance, contract, migration, and repo-structure changes should b
 
 ### Next
 - Connect frontend /hr/leave to canonical API (read-only)
+
+  ## 2026-04-14 (v165)
+
+### Changed
+- Replaced user-facing `Production / PROD` labels with `Primary / PRIMARY`
+- No DB, enum, selected-context, or writable logic changed
+
+### Reason
+- Align UI semantics with current staging-first architecture
+- Avoid misleading testers into thinking the current environment is full production
