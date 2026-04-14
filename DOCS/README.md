@@ -1,40 +1,37 @@
-# Update Pack: 2026-04-14 GitHub Main Path Fix
+# Update Pack: 2026-04-14 Staging Beta Lock Allowlist
 
-This pack is for a small documentation-only cleanup on GitHub `main`.
+This pack is for the minimum-safe staging beta lock follow-up.
 
 ## Goal
 
-- align docs references to the current GitHub path convention
-- remove local filesystem path references from shared docs
-- add the missing selected-context architecture documents under `DOCS/architecture/`
+- document the current staging beta lock model
+- separate `beta lock pass`, `membership role`, and `writable allowed`
+- add a minimum migration draft for `staging.tester2@lemma.local`
+- keep the rollout read-only and avoid allowlist expansion
 
-## Verified GitHub Main Reality Before This Pack
+## Scope
 
-- `README.md` exists
-- `contracts/auth.me.v2.md` exists
-- `contracts/auth.session.context.v1.md` exists
-- `DOCS/README.md` exists
-- `DOCS/architecture/system-overview-v1.md` exists
-- `DOCS/architecture/environment-governance-v1.md` exists
+Included in this pack:
 
-Missing at the time of packaging:
+- `DOCS/architecture/staging-beta-lock-allowlist-v1.md`
+- `DOCS/account-access/staging-account-tier-matrix-v1.md`
+- `supabase/migrations/20260414213000_staging_tester2_beta_lock_readonly.sql`
 
-- `DOCS/architecture/selected-context-decisions-v1.md`
-- `DOCS/architecture/selected-context-rollout-v1.md`
-- `DOCS/architecture/frontend-backend-alignment-v1.md`
+## Non-Goals
+
+- no writable rollout
+- no HR partner writable access
+- no broad allowlist expansion
+- no membership role elevation for `staging.tester2@lemma.local`
 
 ## Target GitHub Paths
 
-- `root/README.md` -> `README.md`
-- `DOCS/architecture/system-overview-v1.md` -> `DOCS/architecture/system-overview-v1.md`
-- `DOCS/architecture/environment-governance-v1.md` -> `DOCS/architecture/environment-governance-v1.md`
-- `DOCS/architecture/selected-context-decisions-v1.md` -> `DOCS/architecture/selected-context-decisions-v1.md`
-- `DOCS/architecture/selected-context-rollout-v1.md` -> `DOCS/architecture/selected-context-rollout-v1.md`
-- `DOCS/architecture/frontend-backend-alignment-v1.md` -> `DOCS/architecture/frontend-backend-alignment-v1.md`
+- `DOCS/architecture/staging-beta-lock-allowlist-v1.md` -> `DOCS/architecture/staging-beta-lock-allowlist-v1.md`
+- `DOCS/account-access/staging-account-tier-matrix-v1.md` -> `DOCS/account-access/staging-account-tier-matrix-v1.md`
+- `supabase/migrations/20260414213000_staging_tester2_beta_lock_readonly.sql` -> `supabase/migrations/20260414213000_staging_tester2_beta_lock_readonly.sql`
 
 ## Notes
 
-- This pack does not change runtime behavior.
-- This pack does not enable demo writes.
-- This pack does not make `team@lemmaofficial.com` writable.
-- This pack exists to reduce CTO/Readdy path confusion and broken-link risk.
+- This pack is intentionally narrow.
+- This pack only handles `staging.tester2@lemma.local`.
+- Passing beta lock after this pack does not imply writable access.
