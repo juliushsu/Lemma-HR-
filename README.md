@@ -41,6 +41,9 @@ Canonical guidance lives in:
 - [Environment Governance](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/environment-governance-v1.md>)
 - [RBAC](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/rbac-v1.md>)
 - [Auth Contract](</Users/chishenhsu/Desktop/Codex/Lemma HR+/contracts/auth.me.v2.md>)
+- [Selected Context Decisions](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/selected-context-decisions-v1.md>)
+- [Selected Context Rollout](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/selected-context-rollout-v1.md>)
+- [Session Context Contract](</Users/chishenhsu/Desktop/Codex/Lemma HR+/contracts/auth.session.context.v1.md>)
 
 ## Seed Layers
 
