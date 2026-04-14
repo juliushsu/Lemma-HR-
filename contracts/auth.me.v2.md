@@ -103,6 +103,19 @@ The contract must stop implying that the first membership is the active context.
 - `current_context` must be null only when the user has no valid selectable context
 - `current_org` and `current_company` must be derived from the selected context, not from separate fallback ordering
 
+## Source of Truth Relationship
+
+- `current_context` is the source of truth
+- `current_org` is a resolved view derived from `current_context.org_id`
+- `current_company` is a resolved view derived from `current_context.company_id`
+- `environment_type` is a convenience mirror derived from `current_context.environment_type`
+
+Frontend should trust this direction only:
+
+`current_context -> current_org/current_company/environment_type`
+
+Frontend should not reverse-derive `current_context` from those sibling fields.
+
 ## Backward Compatibility
 
 - `auth.me.v1` may stay available during rollout
@@ -163,3 +176,15 @@ Readdy should not infer current workspace from:
 - `data.memberships[0]`
 - `data.current_org` alone
 - `data.environment_type` alone
+
+## Transport Rule
+
+For the staging-first selected context rollout, subsequent API requests do not require an extra context header by default.
+
+Preferred rule:
+
+- authentication continues via bearer token
+- selected context is stored server-side or in a signed server-controlled session cookie
+- backend resolves the active membership from that server-side selection
+
+Optional debug or transition headers may exist in staging, but must not become the canonical client contract.
