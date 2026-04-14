@@ -59,7 +59,7 @@ The long-term rule is:
 - the active workspace must be selected explicitly
 - API access should validate against selected context, not incidental membership order
 
-See [auth.me.v2](</Users/chishenhsu/Desktop/Codex/Lemma HR+/contracts/auth.me.v2.md>) for the proposed contract baseline.
+See `contracts/auth.me.v2.md` for the proposed contract baseline.
 
 ## Demo Protection Rule
 

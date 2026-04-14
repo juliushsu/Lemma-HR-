@@ -38,7 +38,7 @@ This document fixes the system boundaries so different collaborators can work fr
 
 ### Operational Documentation
 
-- Path: `docs/`
+- Path: `DOCS/`
 - Owns architecture decisions, runbooks, product status, and smoke references
 
 ## Collaboration Boundaries
@@ -59,4 +59,11 @@ The current auth/session model still tends to infer runtime context from the fir
 - `sandbox` or `staging-write`: writable internal validation environment
 - `seed`: setup-oriented support records
 
-See [Environment Governance](</Users/chishenhsu/Desktop/Codex/Lemma HR+/docs/architecture/environment-governance-v1.md>) for the operational rules.
+See `DOCS/architecture/environment-governance-v1.md` for the operational rules.
+
+## Phase 2 Design References
+
+- `DOCS/architecture/selected-context-decisions-v1.md`
+- `DOCS/architecture/selected-context-rollout-v1.md`
+- `contracts/auth.me.v2.md`
+- `contracts/auth.session.context.v1.md`
