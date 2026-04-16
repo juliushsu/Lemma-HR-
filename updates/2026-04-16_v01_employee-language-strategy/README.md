@@ -14,7 +14,9 @@ Introduce canonical language strategy for employee-facing modules.
 - define locale resolution chain
 - enforce canonical key storage
 - introduce employee preferred locale priority
+- define leave employee-facing locale hint implementation slice
+- add leave locale hint contract samples for list/create/detail
 
 ## Next
-- implement in leave-requests
+- implement in runtime leave-requests repo
 - extend to attendance

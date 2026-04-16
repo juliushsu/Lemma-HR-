@@ -104,24 +104,22 @@ marriage_leave
 bereavement_leave
 maternity_leave
 paternity_leave
+```
 
+### 6.2 Leave Status
 
-⸻
-
-6.2 Leave Status
-
+```text
 draft
 submitted
 pending
 approved
 rejected
 cancelled
+```
 
+### 6.3 Attendance
 
-⸻
-
-6.3 Attendance
-
+```text
 check_in
 check_out
 
@@ -129,50 +127,49 @@ on_time
 late
 absent
 leave
+```
 
+### 6.4 原則
 
-⸻
+- DB 存 key
+- API 回 key
+- Frontend 負責翻譯
 
-6.4 原則
-	•	DB 存 key
-	•	API 回 key
-	•	Frontend 負責翻譯
+---
 
-⸻
+## 7. API Contract 原則
 
-7. API Contract 原則
-
-7.1 Backend 不做翻譯
+### 7.1 Backend 不做翻譯
 
 API response 範例：
 
+```json
 {
   "leave_type": "annual_leave",
   "status": "pending"
 }
+```
 
 ❌ 不可：
 
+```json
 {
   "leave_type": "年假"
 }
+```
 
-
-⸻
-
-7.2 Employee-facing API 可帶 locale hint
+### 7.2 Employee-facing API 可帶 locale hint
 
 建議：
 
+```json
 {
   "resolved_locale": "vi",
   "locale_source": "employee.preferred_locale"
 }
+```
 
-
-⸻
-
-7.3 Leave employee-facing implementation slice（public contract only）
+### 7.3 Leave employee-facing implementation slice（public contract only）
 
 本輪只定義 leave employee-facing routes 的 contract，不宣稱 runtime 已實作。
 
@@ -267,31 +264,32 @@ detail response sample：
 - `approval_steps[*].status` 仍為 canonical key
 - 顯示文字由 frontend i18n 層處理
 
-8. Frontend Strategy
+## 8. Frontend Strategy
 
-8.1 使用 useEmployeeLocale()
+### 8.1 使用 useEmployeeLocale()
 
 統一取得語言：
 
+```ts
 const locale = useEmployeeLocale();
 const t = i18n.getFixedT(locale);
+```
 
-
-⸻
-
-8.2 獨立 namespace
+### 8.2 獨立 namespace
 
 員工端使用：
 
+```text
 selfService.*
 leave.*
 attendance.*
+```
 
 避免與 admin 共用語氣。
 
-⸻
+---
 
-9. Phase Rollout
+## 9. Phase Rollout
 
 Phase 1（本輪）
 	•	建立 language strategy
@@ -306,25 +304,25 @@ Phase 3
 	•	通知系統（LINE / Email / Push）
 	•	多語完整覆蓋
 
-⸻
+---
 
-10. 不在本輪處理（Out of Scope）
+## 10. 不在本輪處理（Out of Scope）
 	•	全語系翻譯完成
 	•	管理端多語
 	•	DB constraint 強制 locale
 	•	AI 自動翻譯
 
-⸻
+---
 
-11. 成功標準（Success Criteria）
+## 11. 成功標準（Success Criteria）
 	•	員工可用母語完成請假申請
 	•	無需教育訓練即可理解狀態
 	•	HR 不需解釋假別差異
 	•	API / DB 不含 display text
 
-⸻
+---
 
-12. CTO 結語
+## 12. CTO 結語
 
 本策略是 Lemma HR+ 核心產品差異之一。
 
